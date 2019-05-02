@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="login.js"></script>
+</head>
+
+<body class="login-body">
+    <h2 id="login-title">TWITTER ADMIN LOGIN</h2>
+
+    <form id="form-box" action="#">
+        <div class="imgcontainer">
+            <img src="twitter.jpg" alt="twitter logo" class="twitter-logo">
+        </div>
+
+        <div class="container">
+
+            <div id="form-data" method="post" name="form">
+                <label for="username"><b>Username:</b></label>
+                <br>
+                <input type="text" placeholder="Enter Username" name="username" id="username" required>
+                <br>
+                <label for="password"><b>Password: </b></label>
+                <br>
+                <input type="password" id="password" placeholder="Enter Password" name="password" required>
+
+                <input type="button" value="Login" id="submit-button" onclick="validate()" />
+
+            </div>
+        </div>
+
+        <div class="container">
+            <h3 id="tw-footer"> Twitter Analytics Dashboard </h3>
+        </div>
+    </form>
+</body>
+</html>
