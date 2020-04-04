@@ -20,8 +20,9 @@ fake_users = fake_users[pd.notnull(fake_users['created_at'])]
 fake_users = fake_users.drop_duplicates(subset=['id'])
 fake_users['Date'] = fake_users['Date'].apply(lambda x: x.strftime('%Y-%m'))
 
-u_name = pd.DataFrame(fake_users.name.str.split(
-    ' ', 1).tolist(), columns=['first', 'last'])
+u_name = pd.DataFrame(
+    fake_users.name.str.split(' ', 1).tolist(), columns=['first', 'last']
+)
 user_name = u_name.groupby(
     'first', as_index=False).size().reset_index(name='counts')
 users_name = user_name.sort_values('counts', ascending=False).head(20)

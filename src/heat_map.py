@@ -21,15 +21,19 @@ fake_users = fake_users[pd.notnull(fake_users['created_at'])]
 fake_users = fake_users.drop_duplicates(subset=['id'])
 fake_users['Date'] = fake_users['Date'].apply(lambda x: x.strftime('%Y-%m'))
 
-u_name = pd.DataFrame(fake_users.name.str.split(
-    ' ', 1).tolist(), columns=['first', 'last'])
+u_name = pd.DataFrame(
+    fake_users.name.str.split(' ', 1).tolist(), columns=['first', 'last']
+)
 user_name = u_name.groupby(
     'first', as_index=False).size().reset_index(name='counts')
 users_name = user_name.sort_values('counts', ascending=False).head(20)
 
 # heat map showing the days and hours of users
-m = pd.pivot_table(tweets_details, values='user_key', index='created_strDayofweek',
-                   columns='created_strMonth', aggfunc=len, fill_value=0, dropna=False)
+m = pd.pivot_table(tweets_details,
+                   values='user_key',
+                   index='created_strDayofweek',
+                   columns='created_strMonth',
+                   aggfunc=len, fill_value=0, dropna=False)
 
 trace = go.Heatmap(z=m,
                    x=[i for i in np.arange(0, 24)],
@@ -42,8 +46,8 @@ layout = go.Layout(
     xaxis=dict(
         nticks=24,
         title='Month',
-        titlefont=dict(
-            size=20)),
+        titlefont=dict(size=20)
+    ),
     yaxis=dict(
     ),
 )
