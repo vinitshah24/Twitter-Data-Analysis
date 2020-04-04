@@ -49,7 +49,6 @@ layout = go.Layout(
             size=20,
         )
     ),
-
     xaxis=dict(
         title='Year',
         range=['2009-01', '2017-1'],
